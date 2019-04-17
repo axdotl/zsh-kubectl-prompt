@@ -56,6 +56,8 @@ function _zsh_kubectl_prompt_precmd() {
         return 1
     fi
 
+    context=$(kubectl config current-context | cut -d'_' -f4)
+
     zstyle -s ':zsh-kubectl-prompt:' namespace namespace
     if [[ "$namespace" != true ]]; then
         ZSH_KUBECTL_PROMPT="${context}"
